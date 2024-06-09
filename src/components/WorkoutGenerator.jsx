@@ -4,7 +4,7 @@ import SectionWrapper from "./SectionWrapper";
 import { SCHEMES, WORKOUTS } from "../utils/swoldier";
 import Button from "./Button";
 
-function Header({ index, title, description }) {
+const Header = ({ index, title, description }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-center gap-2">
@@ -16,7 +16,7 @@ function Header({ index, title, description }) {
       <p className="text-sm sm:text-base mx-auto">{description}</p>
     </div>
   );
-}
+};
 
 Header.propTypes = {
   index: PropTypes.string.isRequired,
@@ -24,7 +24,7 @@ Header.propTypes = {
   description: PropTypes.string.isRequired,
 };
 
-export default function WorkoutGenerator({
+const WorkoutGenerator = ({
   muscles,
   setMuscles,
   workoutType,
@@ -32,14 +32,14 @@ export default function WorkoutGenerator({
   goal,
   setGoal,
   updateWorkout,
-}) {
+}) => {
   const [showModal, setShowModal] = useState(false);
 
-  function toggleModal() {
+  const toggleModal = () => {
     setShowModal(!showModal);
-  }
+  };
 
-  function updateMuscles(muscleGroup) {
+  const updateMuscles = (muscleGroup) => {
     if (muscles.includes(muscleGroup)) {
       setMuscles(muscles.filter((val) => val !== muscleGroup));
       return;
@@ -59,7 +59,7 @@ export default function WorkoutGenerator({
     if (muscles.length === 2) {
       setShowModal(false);
     }
-  }
+  };
 
   return (
     <SectionWrapper
@@ -150,7 +150,7 @@ export default function WorkoutGenerator({
       <Button func={updateWorkout} text={"Formulate"} />
     </SectionWrapper>
   );
-}
+};
 
 WorkoutGenerator.propTypes = {
   muscles: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -161,3 +161,5 @@ WorkoutGenerator.propTypes = {
   setGoal: PropTypes.func.isRequired,
   updateWorkout: PropTypes.func.isRequired,
 };
+
+export default WorkoutGenerator;

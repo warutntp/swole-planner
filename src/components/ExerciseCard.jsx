@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 const ExerciseCard = ({ exercise, i }) => {
   const [setsCompleted, setSetsComplete] = useState(0);
 
-  function handleSetIncrement() {
+  const handleSetIncrement = () => {
     setSetsComplete((setsCompleted + 1) % 6);
-  }
+  };
 
   return (
     <div className="p-4 rounded-md flex flex-col gap-4 bg-slate-950 sm:flex-wrap">
